@@ -28,7 +28,7 @@
 			<h1 class="text-center" style="font-family: 'Bungee Shade', cursive"><i class="fa fa-facebook-square fa-flip-vertical" aria-hidden="true"></i>Friend Finder</h1>
 			<hr>
 			<h3 class="text-center" style="font-family: 'VT323', monospace">Fill Out The Following Survey</h2>
-      <h4 class="text-center" style="font-family: 'VT323', monospace">Rank your feelings from 1(least) to 5(most)</h2>
+      <h4 class="text-center" style="font-family: 'VT323', monospace">Rank your feelings from least(1) to most(5)</h2>
 			<br>
 		</div>
 		<div class='survey'>
@@ -153,25 +153,23 @@
 </body>
 </html>
 <script type="text/javascript">
-	$("#submit").on("click", function(){
+	$("#submit").on("click", function() {
 		var url = window.location.origin + '/api/friends';
 		var scores = [];
 		for(var i=0; i<10; i++){
 			scores.push(parseInt($("#ques"+i).val()));
 		};
-		console.log(url)
 		var newFriend = {
 			name: $("#name").val(),
 			scores: scores,
 			pic: $("#pic").val()
 		};
-		$.post(url, newFriend, function(data){
-			console.log(data)
+		$.post(url, newFriend, function(data) {
 			$(".survey").html("<div class='text-center'><h2>Your Match!</h2></div><div class='text-center'><h2>"+data.name+"</h2></div><img src='"+data.pic+"'>");
 		});
 		$("#name").val("");
 		$("#pic").val("");
-		for(var i=0; i<10; i++){
+		for(var i=0; i<10; i++) {
 			$("#ques"+i).val("");
 		};
 		return false;
