@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Friend Finder</title>
+<!--  <link type="text/css" rel="stylesheet" href="../public/assets/css/reset.css"/> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<!--  <link type="text/css" rel="stylesheet" href="../public/assets/css/style.css"/> -->
+</head>
+<body>
+
+	<div class="container">
+		<div class="jumbotron">
+			<h1 class=""><i class="fa fa-facebook-square" aria-hidden="true"></i>Friend Finder</h1>
+			<hr>
+			<h2 class="text-center">Find a Friend</h2>
+			<br>
+		</div>
+		<div class='survey'>
+		<form class="form-horizontal">
+		  <div class="form-group">
+      		<label for="name">Name (Required)</label>
+      		<input type="text" name="name" id="name">
+    	  </div>
+    	  <div class="form-group">
+      		<label for="pic">Picture (Required)</label>
+      		<input type="text" name="pic" id="pic">
+    	  </div>
+		  <div class="form-group">
+      		<label for="ques0">I find it difficult to make new friends.</label>
+      		<select id="ques0" name="ques0" class="form-control">
+      		  <option>1</option>
+      		  <option>2</option>
+      		  <option>3</option>
+      		  <option>4</option>
+      		  <option>5</option>
+      		</select>
+    	  </div>
+		  <div class="form-group">
+      		<label for="ques1">I enjoy going outside and becoming one with nature.</label>
+      		<select id="ques1" name="ques1" class="form-control">
+      		  <option>1</option>
+      		  <option>2</option>
+      		  <option>3</option>
+      		  <option>4</option>
+      		  <option>5</option>
+      		</select>
+    	  </div>
+    	  <div class="form-group">
+      		<label for="ques2">Time is a flat circle.</label>
+      		<select id="ques2" name="ques2" class="form-control">
+      		  <option>1</option>
+      		  <option>2</option>
+      		  <option>3</option>
+      		  <option>4</option>
+      		  <option>5</option>
+      		</select>
+    	  </div>
+    	  <div class="form-group">
+      		<label for="ques3">Reality is a social construct.</label>
+      		<select id="ques3" name="ques3" class="form-control">
+      		  <option>1</option>
+      		  <option>2</option>
+      		  <option>3</option>
+      		  <option>4</option>
+      		  <option>5</option>
+      		</select>
+    	  </div>
+    	  <div class="form-group">
+      		<label for="ques4">Seinfeld is the best '90s sitcom.</label>
+      		<select id="ques4" name="ques4" class="form-control">
+      		  <option>1</option>
+      		  <option>2</option>
+      		  <option>3</option>
+      		  <option>4</option>
+      		  <option>5</option>
+      		</select>
+    	  </div>
+    	  <div class="form-group">
+      		<label for="ques5">I think ghost exist even without hard evidence.</label>
+      		<select id="ques5" name="ques5" class="form-control">
+      		  <option>1</option>
+      		  <option>2</option>
+      		  <option>3</option>
+      		  <option>4</option>
+      		  <option>5</option>
+      		</select>
+    	  </div>
+    	  <div class="form-group">
+      		<label for="ques6">Bigfoot is probably just a hairy old man in the woods.</label>
+      		<select id="ques6" name="ques6" class="form-control">
+      		  <option>1</option>
+      		  <option>2</option>
+      		  <option>3</option>
+      		  <option>4</option>
+      		  <option>5</option>
+      		</select>
+    	  </div>
+    	  <div class="form-group">
+      		<label for="ques7">Never trust a big butt and a smile.</label>
+      		<select id="ques7" name="ques7" class="form-control">
+      		  <option>1</option>
+      		  <option>2</option>
+      		  <option>3</option>
+      		  <option>4</option>
+      		  <option>5</option>
+      		</select>
+    	  </div>
+    	  <div class="form-group">
+      		<label for="ques8">Even without hard evidence, I believe in aliens.</label>
+      		<select id="ques8" name="ques8" class="form-control">
+      		  <option>1</option>
+      		  <option>2</option>
+      		  <option>3</option>
+      		  <option>4</option>
+      		  <option>5</option>
+      		</select>
+    	  </div>
+    	  <div class="form-group">
+      		<label for="ques9">Ghosts could just be asshole aliens.</label>
+      		<select id="ques9" name="ques9" class="form-control">
+      		  <option>1</option>
+      		  <option>2</option>
+      		  <option>3</option>
+      		  <option>4</option>
+      		  <option>5</option>
+      		</select>
+    	  </div>
+    	  <button class="btn btn-danger" id="submit">Get a Friend!</button>
+		</form>
+		</div>
+
+    <footer class="footer">
+	        <p><a href="/api/friends">API Matches Link</a></p>
+    </footer>
+
+
+</body>
+</html>
+<script type="text/javascript">
+	$("#submit").on("click", function(){
+		var url = window.location.origin + '/api/friends';
+		var scores = [];
+		for(var i=0; i<10; i++){
+			scores.push(parseInt($("#ques"+i).val()));
+		};
+		console.log(url)
+		var newFriend = {
+			name: $("#name").val(),
+			scores: scores,
+			pic: $("#pic").val()
+		};
+		$.post(url, newFriend, function(data){
+			console.log(data)
+			$(".survey").html("<div class='text-center'><h2 style='color: red'>Your Match!</h2></div><div class='text-center'><h2>"+data.name+"</h2></div><img src='"+data.pic+"'>");
+		});
+		$("#name").val("");
+		$("#pic").val("");
+		for(var i=0; i<10; i++){
+			$("#ques"+i).val("");
+		};
+		return false;
+	});
+</script>
