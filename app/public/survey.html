@@ -3,20 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>Friend Finder</title>
-<!--  <link type="text/css" rel="stylesheet" href="../public/assets/css/reset.css"/> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-<!--  <link type="text/css" rel="stylesheet" href="../public/assets/css/style.css"/> -->
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Monoton|Bungee+Hairline" rel="stylesheet">
+  <style>
+    h2 {
+        color: green;
+        font-family: 'Bungee Hairline', cursive;
+      }
+    img {
+      display:block;
+      margin:auto;
+      }
+
+  </style>
 </head>
+
 <body>
 
 	<div class="container">
 		<div class="jumbotron">
-			<h1 class=""><i class="fa fa-facebook-square" aria-hidden="true"></i>Friend Finder</h1>
+			<h1 class="text-center" style="font-family: 'Bungee Shade', cursive"><i class="fa fa-facebook-square fa-flip-vertical" aria-hidden="true"></i>Friend Finder</h1>
 			<hr>
-			<h2 class="text-center">Find a Friend</h2>
+			<h3 class="text-center" style="font-family: 'VT323', monospace">Fill Out The Following Survey</h2>
+      <h4 class="text-center" style="font-family: 'VT323', monospace">Rank your feelings from 1(least) to 5(most)</h2>
 			<br>
 		</div>
 		<div class='survey'>
@@ -129,12 +141,12 @@
       		  <option>5</option>
       		</select>
     	  </div>
-    	  <button class="btn btn-danger" id="submit">Get a Friend!</button>
+    	  <button class="btn btn-secondary" id="submit">Get a Friend!</button>
 		</form>
 		</div>
 
     <footer class="footer">
-	        <p><a href="/api/friends">API Matches Link</a></p>
+	        <p><a href="/api/friends">Friends Link</a></p>
     </footer>
 
 
@@ -155,7 +167,7 @@
 		};
 		$.post(url, newFriend, function(data){
 			console.log(data)
-			$(".survey").html("<div class='text-center'><h2 style='color: red'>Your Match!</h2></div><div class='text-center'><h2>"+data.name+"</h2></div><img src='"+data.pic+"'>");
+			$(".survey").html("<div class='text-center'><h2>Your Match!</h2></div><div class='text-center'><h2>"+data.name+"</h2></div><img src='"+data.pic+"'>");
 		});
 		$("#name").val("");
 		$("#pic").val("");
