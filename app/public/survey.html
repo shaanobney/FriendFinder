@@ -144,6 +144,9 @@
     	  <button class="btn btn-secondary" id="submit">Get a Friend!</button>
 		</form>
 		</div>
+    <div class="text-center">
+        <a class="" href="/survey"><button type="button" class="btn btn-lg btn-caution"><h4>RESET</h4></button></a>
+    </div>
 
     <footer class="footer">
 	        <p><a href="/api/friends">Friends Link</a></p>
@@ -156,7 +159,7 @@
 	$("#submit").on("click", function() {
 		var url = window.location.origin + '/api/friends';
 		var scores = [];
-		for(var i=0; i<10; i++){
+		for(var i = 0; i < 10; i++){
 			scores.push(parseInt($("#ques"+i).val()));
 		};
 		var newFriend = {
@@ -169,7 +172,7 @@
 		});
 		$("#name").val("");
 		$("#pic").val("");
-		for(var i=0; i<10; i++) {
+		for(var i = 0; i < 10; i++) {
 			$("#ques"+i).val("");
 		};
 		return false;

@@ -7,14 +7,14 @@ module.exports = function(app) {
 	});
 	app.post('/api/friends', function(req, res) {
 		var match;
-		var least = 10000;
-		for(var i=0; i<friends.length; i++) {
-			var newDif = 0;
-			for(var j=0; j<friends[i].scores.length; j++) {
-				newDif += Math.abs(friends[i].scores[j] - req.body.scores[j])
+		var worst = 10000;
+		for(var i = 0; i < friends.length; i++) {
+			var baseLine = 0;
+			for(var j = 0; j < friends[i].scores.length; j++) {
+				baseLine += Math.abs(friends[i].scores[j] - req.body.scores[j]);
 			};
-			if(newDif < least){
-				least = newDif;
+			if(baseLine < worst){
+				worst = baseLine;
 				match = i;
 			};
 		};

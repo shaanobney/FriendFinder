@@ -1,5 +1,20 @@
 var friends = [
 {
+name: "Pile O'Trash", 
+scores: [
+3,
+1,
+2,
+3,
+5,
+1,
+2,
+2,
+2,
+3
+],
+pic: "http://images2.fanpop.com/images/quiz/212000/212347_1242622902318_404_410.jpg"},
+{
 name: "Haystacks Calhoun", 
 scores: [
 5,
