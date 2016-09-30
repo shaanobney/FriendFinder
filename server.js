@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var app = express();
-var port = process.env.port || 80;
+var PORT = process.env.PORT || 80;
 
 
 app.use(bodyParser.json());
@@ -15,6 +15,6 @@ require('./app/routing/api-routes.js')(app);
 require('./app/routing/html-routes.js')(app);
 
 
-app.listen(port, function() {
-	console.log("Server listening on PORT: " + port);
+app.listen(PORT, function() {
+	console.log("Server listening on PORT: " + PORT);
 });
